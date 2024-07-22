@@ -1,0 +1,10 @@
+.result.active{
+  opacity: 100%;
+  pointer-events: all;
+  transition: 0.5s;
+}
+
+/* двигаем black_bg */
+.black_bg.move{
+  transform: translateZ(10px);
+}
