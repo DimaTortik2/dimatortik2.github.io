@@ -36,7 +36,7 @@ justify-content: center;
 .button_continue{
     transform: scale(.8);
     right: calc(var(--index) * 5);
-    bottom: calc(var(--index) * 10);
+    bottom: calc(var(--index) * 13);
 
 }
 .result__p p{
