@@ -31,7 +31,7 @@ justify-content: center;
   width: 100vw;
 }
 .foot{
-  bottom: -20vh;
+  bottom: -15vh;
 }
 .button_continue{
     transform: scale(.8);
