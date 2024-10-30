@@ -33,9 +33,14 @@
     left: 2vw;
   }
   #time{
-    top: calc(30vh ) ;
+    top: 30vh ;
     left: 2vw;
   }
+
+  #rotate{
+  top: 30vh;
+  right: 2vw;
+}
 
 }
 
