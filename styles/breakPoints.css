@@ -1,0 +1,90 @@
+@media (max-width : 1180px){
+  .text_container{
+    font-size: 7rem;
+  }
+
+  .time_container{
+    width: calc( (1vh + 1vw) * 9 );
+    height: calc( (1vh + 1vw) * 9 );
+  }
+}
+
+@media (max-width : 1034px){
+  .text_container{
+    font-size: 6rem;
+  }
+}
+
+@media (max-width : 880px){
+  .text_container{
+    font-size: 5rem;
+  }
+
+  .time_container p{
+    font-size: 1.1rem;
+  }
+
+  #time img{
+    width: 50px;
+  }
+
+  .time_container{
+    top: calc(30vh ) ;
+    left: 2vw;
+  }
+  #time{
+    top: calc(30vh ) ;
+    left: 2vw;
+  }
+
+}
+
+@media (max-width : 740px){
+  .text_container{
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width : 665px){
+  .text_container{
+    font-size: 4rem;
+  }
+}
+
+@media (max-width : 590px){
+  .text_container{
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width : 520px){
+  .text_container{
+    font-size: 3rem;
+  }
+}
+
+@media (max-width : 450px){
+  .text_container{
+    font-size: 2.5rem;
+  }
+  #rotate img{
+    width: 50px; 
+  }
+}
+
+@media (max-width : 365px){
+  .text_container{
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width : 335px){
+  .text_container{
+    font-size: 2rem;
+  }
+}
+@media (max-width : 300px){
+  .text_container{
+    font-size: 1.5rem;
+  }
+}
