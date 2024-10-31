@@ -1,122 +1,99 @@
-let message = document.querySelector('.message')
-let button = document.getElementById('button')
-let input = document.getElementById('input')
-let rotate = document.getElementById('rotate')
-let pause = document.getElementById('pause')
-let time = document.getElementById('time')
-
-let input_time = document.getElementById('input_time')
-let button_time = document.getElementById('button_time')
+let el = {
+  message : document.querySelector('.message'),
+  button : document.getElementById('button'),
+  input : document.getElementById('input'),
+  rotate : document.getElementById('rotate'),
+  pause : document.getElementById('pause'),
+  time : document.getElementById('time'),
+  input_time : document.getElementById('input_time'),
+  button_time : document.getElementById('button_time'),
+  time_container : document.querySelector('.time_container'),
+  bg : document.querySelector('section'),
+}
 
 let last_space = 0
 let current_space
 
 let speed = 250
 
-function start_styles() {
-	button.classList.add('hide')
-	input.classList.add('hide')
-	rotate.classList.add('hide')
-
-	pause.classList.remove('hide')
-
-	document.querySelector('section').classList.add('color')
+function read_UI() {
+  el.button.classList.add('hide')
+  el.input.classList.add('hide')
+  el.rotate.classList.add('hide')
+  el.time.classList.add('hide')
+  el.pause.classList.remove('hide')
+  el.bg.classList.add('color')
 }
 
-function remove_styles() {
-	button.classList.remove('hide')
-	input.classList.remove('hide')
-	rotate.classList.remove('hide')
-	pause.classList.add('hide')
-
-	document.querySelector('section').classList.remove('color')
+function start_UI() {
+  el.button.classList.remove('hide')
+  el.input.classList.remove('hide')
+  el.rotate.classList.remove('hide')
+  el.pause.classList.add('hide')
+  el.time.classList.remove('hide')
+  el.bg.classList.remove('color')
 }
 
 function nextWord(text) {
-	current_space = text.indexOf(' ', last_space + 1)
+  current_space = text.indexOf(' ', last_space + 1)
 
-	let word = text.slice(last_space, current_space)
-	// [last_space, current_space] = [current_space, last_space]
-	last_space = current_space
+  let word = text.slice(last_space, current_space)
+  // [last_space, current_space] = [current_space, last_space]
+  last_space = current_space
 
-	return word
+  return word
 }
 
-function set_button_continue() {
-	button.textContent = 'continue'
+function set_button(set_text) {
+  el.button.textContent = set_text
 }
 
-function set_button_start() {
-	button.textContent = 'start'
+function add_listeners(interval){
+
+  el.rotate.addEventListener('click', () => {
+    last_space = 0
+    el.message.textContent = ' '
+    input.value = ''
+    set_button('start')
+  })
+
+  el.pause.addEventListener('click', () => {
+    clearInterval(interval)
+    start_UI()
+    set_button('continue')
+  })
+
+  el.button_time.addEventListener('click', () => {
+    el.time.classList.remove('hide')
+    el.time_container.classList.add('hide')
+    speed = input_time.value
+  })
+
+  el.time.addEventListener('click', () => {
+    el.time.classList.add('hide')
+    el.time_container.classList.remove('hide')
+  })
 }
-
-function add_rotate_listener() {
-	rotate.addEventListener('click', () => {
-		last_space = 0
-		message.textContent = ' '
-		input.value = ''
-		set_button_start()
-	})
-}
-
-function add_pause_listener(interval) {
-	pause.addEventListener('click', () => {
-		clearInterval(interval)
-		remove_styles()
-		set_button_continue()
-	})
-}
-
-function add_button_time_listener(){
-	button_time.addEventListener('click', () => {
-
-		time.classList.remove('hide')
-		time_container.classList.add('hide')
-		speed = input_time.value
-
-	})
-}
-
-function add_time_listener() {
-
-	time_container = document.querySelector('.time_container')
-
-	time.addEventListener('click', () => {
-		
-		time.classList.add('hide')
-		time_container.classList.remove('hide')
-
-		add_button_time_listener()
-
-	})
-}
-
 
 function loop() {
-	start_styles()
+  read_UI()
 
+  let text = ` ${input.value} `   
 
-	let text = ' ' + input.value + ' ' //для корректной работы
+  let interval = setInterval(() => {
 
-	let interval = setInterval(() => {
+    let word = nextWord(text)
 
-			
+    if (word === '') {
+      last_space = 0 //сбрасываем для того, чтобы все началось сначала
+      start_UI()
+      clearInterval(interval) //останавливаем процесс вывода
+    }
 
+    el.message.textContent = word
+  }, Math.round(60000 / speed))
 
-		add_pause_listener(interval)
-		add_rotate_listener()
-
-		let word = nextWord(text)
-
-		if (word === '') {
-			last_space = 0 //сбрасываем для того, чтобы все началось сначала
-			remove_styles()
-			clearInterval(interval) //останавливаем процесс вывода
-		}
-
-		message.textContent = word
-	}, Math.round(60000 / speed))
+  add_listeners(interval)
 }
 
-add_time_listener()
 button.addEventListener('click', loop)
