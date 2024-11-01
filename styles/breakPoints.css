@@ -2,11 +2,6 @@
   .text_container{
     font-size: 7rem;
   }
-
-  .time_container{
-    width: calc( (1vh + 1vw) * 9 );
-    height: calc( (1vh + 1vw) * 9 );
-  }
 }
 
 @media (max-width : 1034px){
@@ -20,27 +15,15 @@
     font-size: 5rem;
   }
 
-  .time_container p{
-    font-size: 1.1rem;
+  .rotate_img{
+    width: 51px;
+    height: 51px;
   }
-
+ 
   #time img{
     width: 50px;
   }
-
-  .time_container{
-    top: calc(30vh ) ;
-    left: 2vw;
-  }
-  #time{
-    top: 30vh ;
-    left: 2vw;
-  }
-
-  #rotate{
-  top: 30vh;
-  right: 2vw;
-}
+  
 
 }
 
@@ -60,12 +43,16 @@
   .text_container{
     font-size: 3.5rem;
   }
+  .time_container p{
+    font-size: 2rem;
+  }
 }
 
 @media (max-width : 520px){
   .text_container{
     font-size: 3rem;
   }
+  
 }
 
 @media (max-width : 450px){
@@ -74,6 +61,9 @@
   }
   #rotate img{
     width: 50px; 
+  }
+  .time_container p{
+    font-size: 1.5rem;
   }
 }
 
@@ -87,9 +77,15 @@
   .text_container{
     font-size: 2rem;
   }
+  .time_container p{
+    font-size: 1.2rem;
+  }
 }
 @media (max-width : 300px){
   .text_container{
     font-size: 1.5rem;
+  }
+  .time_container p{
+    font-size: 1rem;
   }
 }
